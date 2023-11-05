@@ -9,7 +9,7 @@ class Base(DeclarativeBase):
     pass
 
 
-class CafesDatabase(Base):
+class Cafe(Base):
     __tablename__ = "cafe"
 
     id = Column(Integer, primary_key=True)
@@ -28,16 +28,16 @@ class CafesDatabase(Base):
 Base.metadata.create_all(engine)
 
 
-class CafeResearch:
+class CafeDatabase:
     def __init__(self):
         self.session = Session(engine)
 
     def get_all_cafes(self):
-        result = self.session.execute(select(CafesDatabase))
+        result = self.session.execute(select(Cafe))
         all_cafes = result.scalars().all()
         return all_cafes
 
-#    def add_new_highscore(self, score):
-#        new_highscore = HighScore(score=score)
-#        self.session.add(new_highscore)
+#    def add_new_cafe(self, cafe):
+#        new_cafe = CafeDatabase(cafe)
+#        self.session.add(new_cafe)
 #        self.session.commit()
