@@ -41,3 +41,8 @@ class CafeDatabase:
 #        new_cafe = CafeDatabase(cafe)
 #        self.session.add(new_cafe)
 #        self.session.commit()
+
+    def select_cafe(self, cafe_id):
+        result = self.session.execute(select(Cafe).where(Cafe.id == cafe_id))
+        cafe = result.scalar()
+        return cafe

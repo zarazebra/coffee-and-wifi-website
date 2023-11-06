@@ -15,9 +15,11 @@ def show_overview():
     return render_template("overview.html", cafes=cafes)
 
 
-@app.route("/<cafe>")
-def show_details():
-    return render_template("cafe.html")
+@app.route("/<int:cafe_id>")
+def show_details(cafe_id):
+    cafe_database = CafeDatabase()
+    cafe = cafe_database.select_cafe(cafe_id)
+    return render_template("cafe.html", cafe=cafe)
 
 
 @app.route("/new")

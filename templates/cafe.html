@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cafe "{{ cafe.name }}</title>
+    <title>Cafe "{{ cafe.name }}"</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
 
@@ -22,6 +22,83 @@
         </div>
       </div>
     </header>
+    <div class="container px-4 py-5">
+
+      <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
+
+        <div class="col d-flex flex-column align-items-start gap-2">
+          <h2 class="fw-bold text-body-emphasis">{{ cafe.name }}</h2>
+          <p class="text-body-secondary">{{ cafe.location }}</p>
+          <a href="{{ cafe.map_url }}" class="btn btn-primary btn-lg">Show On Map</a>
+        </div>
+
+        <div class="col">
+          <div class="row row-cols-1 row-cols-sm-2 g-4">
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/wifi.svg" alt="WiFi" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">WiFi</h4>
+              {% if cafe.has_wifi %}
+                <p class="text-body-secondary">Free WiFi connection available</p>
+              {% else %}
+                <p class="text-body-secondary">No free WiFi connection available</p>
+              {% endif %}
+            </div>
+
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/sockets.svg" alt="Electric-Socket" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">Sockets</h4>
+              {% if cafe.has_sockets %}
+                <p class="text-body-secondary">Plenty of sockets available.</p>
+              {% else %}
+                <p class="text-body-secondary">No sockets available.</p>
+              {% endif %}
+            </div>
+
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/calls.svg" alt="Telephone" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">Take Calls</h4>
+              {% if cafe.can_take_calls %}
+              <p class="text-body-secondary">It is possible to take/make calls.</p>
+              {% else %}
+              <p class="text-body-secondary">Not possible to take/make calls.</p>
+              {% endif %}
+            </div>
+
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/price.svg" alt="Pound-Sign" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">Coffee Price</h4>
+              <p class="text-body-secondary">Price of coffee is {{ cafe.coffee_price}}.</p>
+            </div>
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/seats.svg" alt="People" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">No. Of Seats</h4>
+              <p class="text-body-secondary">Number of seats are {{ cafe.seats }}.</p>
+            </div>
+            <div class="col d-flex flex-column gap-2">
+              <div class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-4 rounded-3">
+                <img src="static/images/toilet.svg" alt="WC" width="25" height="25">
+              </div>
+              <h4 class="fw-semibold mb-0 text-body-emphasis">Toilets</h4>
+              {% if cafe.has_toilet %}
+                <p class="text-body-secondary">There are toilets available.</p>
+              {% else %}
+                <p class="text-body-secondary">There are no toilets available.</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
