@@ -20,7 +20,7 @@ class Cafe(Base):
     has_sockets = Column(Boolean, nullable=False)
     has_toilet = Column(Boolean, nullable=False)
     has_wifi = Column(Boolean, nullable=False)
-    can_take_calls = Column(Integer, nullable=False)
+    can_take_calls = Column(Boolean, nullable=False)
     seats = Column(String)
     coffee_price = Column(String)
 
@@ -37,12 +37,11 @@ class CafeDatabase:
         all_cafes = result.scalars().all()
         return all_cafes
 
-#    def add_new_cafe(self, cafe):
-#        new_cafe = CafeDatabase(cafe)
-#        self.session.add(new_cafe)
-#        self.session.commit()
-
     def select_cafe(self, cafe_id):
         result = self.session.execute(select(Cafe).where(Cafe.id == cafe_id))
         cafe = result.scalar()
         return cafe
+
+    def add_cafe(self, cafe):
+        self.session.add(cafe)
+        self.session.commit()
