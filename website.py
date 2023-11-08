@@ -45,7 +45,7 @@ def add_cafe():
         )
         cafe_database.add_cafe(new_cafe)
         flash("The new cafe has successfully been added!")
-        return redirect(url_for("show_overview"))
+        return redirect(url_for("add_cafe"))
 
     return render_template("suggestion.html", form=form)
 
