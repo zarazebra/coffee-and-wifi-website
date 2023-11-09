@@ -27,61 +27,114 @@
         </div>
       </div>
     </header>
-      <div class="row text-center">
+
+        <div class="row row-cols-3 text-center">
         <div class="col">
           <h2>Filters</h2>
-          <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-            <button class="btn m-3">
+
+          <div class="btn-group-vertical" role="group" aria-label="Vertical checkbox button group">
+            <input type="checkbox" class="btn-check" id="btn-check-1">
+            <label class="btn btn-outline-secondary" for="btn-check-1">
               <img src="static/images/calls.svg" alt="Telephone" width="25" height="25">
               Take Calls
+            </label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-2">
+            <label class="btn btn-outline-secondary" for="btn-check-2">
+              <img src="static/images/sockets.svg" alt="Electric-socket" width="25" height="25">
+              Sockets Available
+            </label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-3">
+            <label class="btn btn-outline-secondary" for="btn-check-3">
+              <img src="static/images/wifi.svg" alt="WiFi-sign" width="25" height="25">
+              WiFi
+            </label><br>
+
+            <input type="checkbox" class="btn-check" id="btn-check-4">
+            <label class="btn btn-outline-secondary" for="btn-check-4">
+              <img src="static/images/toilet.svg" alt="WC" width="25" height="25">
+              Toilets
+            </label><br>
+
+            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeats" aria-expanded="false" aria-controls="collapseSeats">
+              <img src="static/images/seats.svg" alt="Seats" width="25" height="25">
+              No. Of Seats
             </button>
-            <button class="btn m-3">
-                <img src="static/images/price.svg" alt="Pound-Sign" width="25" height="25">
-                Coffee Price
+            <div class="collapse" id="collapseSeats">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio01" value="option1">
+                <label class="form-check-label" for="inlineRadio01">0-10</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio02" value="option2">
+                <label class="form-check-label" for="inlineRadio02">10-20</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio03" value="option3">
+                <label class="form-check-label" for="inlineRadio03">20-30</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio04" value="option4">
+                <label class="form-check-label" for="inlineRadio04">30-40</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio05" value="option5">
+                <label class="form-check-label" for="inlineRadio05">40-50</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio06" value="option6">
+                <label class="form-check-label" for="inlineRadio06">50+</label>
+              </div>
+            </div><br>
+
+            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCoffeePrice" aria-expanded="false" aria-controls="collapseCoffeePrice">
+              <img src="static/images/price.svg" alt="Pound-sign" width="25" height="25">
+              Coffee Price
             </button>
-            <button class="btn m-3">
-                <img src="static/images/seats.svg" alt="People" width="25" height="25">
-                No. Of Seats
-            </button>
-            <button class="btn m-3">
-                <img src="static/images/sockets.svg" alt="Electric-Socket" width="25" height="25">
-                Sockets Available
-            </button>
-            <button class="btn m-3">
-                <img src="static/images/toilet.svg" alt="WC" width="25" height="25">
-                Toilets
-            </button>
-            <button class="btn m-3">
-                <img src="static/images/wifi.svg" alt="WiFi" width="25" height="25">
-                WiFi
-            </button>
+            <div class="collapse" id="collapseCoffeePrice">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option01">
+                <label class="form-check-label" for="inlineRadio3">less than £3</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option02">
+                <label class="form-check-label" for="inlineRadio4">£3-6</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option03">
+                <label class="form-check-label" for="inlineRadio5">more than £6</label>
+              </div>
+            </div><br>
           </div>
         </div>
+
         <div class="col">
           <h2>Cafes</h2>
           {% for cafe in cafes %}
-          <a href="{{url_for('show_details', cafe_id=cafe.id)}}" class="text-decoration-none">
-            <div class="card mb-3" style="max-width: 540px;">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img src="{{ cafe.img_url }}" class="img-fluid rounded-start" alt="{{ cafe.name }}">
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ cafe.name }}</h5>
-                    <p class="card-text">{{ cafe.location }}</p>
+            <a href="{{url_for('show_details', cafe_id=cafe.id)}}" class="text-decoration-none">
+              <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img src="{{ cafe.img_url }}" class="img-fluid rounded-start" alt="{{ cafe.name }}">
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ cafe.name }}</h5>
+                      <p class="card-text">{{ cafe.location }}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </a>
+            </a>
           {% endfor %}
         </div>
+
         <div class="col">
           <h2>Locations</h2>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.4914387775666!2d-0.09001612275269222!3d51.50419941093628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603d933684165%3A0xabf43ad7f4ce48c8!2sScience%20Gallery%20London!5e0!3m2!1sde!2sde!4v1699212149797!5m2!1sde!2sde" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-      </div>
+        </div>
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
       <div class="col-md-4 d-flex align-items-center">
         <a href="{{url_for('show_home')}}" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
