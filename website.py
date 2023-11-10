@@ -18,8 +18,7 @@ def show_home():
 @app.route("/overview")
 def show_overview():
     cafes = cafe_database.get_all_cafes()
-    value = request.form.get("inlineRadioOptions2")
-    print(value)
+    #value = request.form.get("inlineRadioOptions2")
     return render_template("overview.html", cafes=cafes)
 
 
