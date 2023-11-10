@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, url_for
+from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from database import CafeDatabase, Cafe
 from forms import AddCafeForm
@@ -18,6 +18,8 @@ def show_home():
 @app.route("/overview")
 def show_overview():
     cafes = cafe_database.get_all_cafes()
+    value = request.form.get("inlineRadioOptions2")
+    print(value)
     return render_template("overview.html", cafes=cafes)
 
 
@@ -27,7 +29,7 @@ def show_details(cafe_id):
     return render_template("cafe.html", cafe=cafe)
 
 
-@app.route("/new", methods=["GET", "POST"])
+@app.route("/new")
 def add_cafe():
     form = AddCafeForm()
     if form.validate_on_submit():
