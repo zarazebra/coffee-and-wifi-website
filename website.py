@@ -41,9 +41,10 @@ def add_cafe():
             has_wifi=form.has_wifi.data,
             can_take_calls=form.can_take_calls.data,
             seats=form.seats.data,
-            float_coffee_price=form.coffee_price.data
+            coffee_price=form.coffee_price.data
         )
         cafe_database.add_cafe(new_cafe)
+        cafe_database.convert_price_to_float()
         flash("The new cafe has successfully been added!")
         return redirect(url_for("add_cafe"))
 
