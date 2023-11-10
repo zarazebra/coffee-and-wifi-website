@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms.fields import StringField, SubmitField, RadioField, BooleanField
+from wtforms.fields import StringField, SubmitField, RadioField, BooleanField, FloatField
 from wtforms.validators import DataRequired, URL
 
 
@@ -13,5 +13,5 @@ class AddCafeForm(FlaskForm):
     has_wifi = BooleanField("WiFi")
     can_take_calls = BooleanField("Calls")
     seats = RadioField("No. Of Seats", choices=["0-10", "10-20", "20-30", "30-40", "40-50", "50+"], validators=[DataRequired()])
-    coffee_price = StringField("Coffee Price", default="£", validators=[DataRequired()])
+    coffee_price = FloatField("Coffee Price", default="£", validators=[DataRequired(), ])
     submit = SubmitField("Add new cafe")

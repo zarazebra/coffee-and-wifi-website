@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, select, String, Boolean
+from sqlalchemy import create_engine, Column, Integer, select, String, Boolean, Float
 from sqlalchemy.orm import Session
 from sqlalchemy.orm import DeclarativeBase
 
@@ -21,8 +21,9 @@ class Cafe(Base):
     has_toilet = Column(Boolean, nullable=False)
     has_wifi = Column(Boolean, nullable=False)
     can_take_calls = Column(Boolean, nullable=False)
-    seats = Column(String)
+    seats = Column(String, nullable=False)
     coffee_price = Column(String)
+    float_coffee_price = Column(Float)
 
 
 Base.metadata.create_all(engine)
@@ -31,6 +32,7 @@ Base.metadata.create_all(engine)
 class CafeDatabase:
     def __init__(self):
         self.session = Session(engine)
+        self.convert_price_to_float()
 
     def get_all_cafes(self):
         result = self.session.execute(select(Cafe))
@@ -45,3 +47,15 @@ class CafeDatabase:
     def add_cafe(self, cafe):
         self.session.add(cafe)
         self.session.commit()
+
+    def convert_price_to_float(self):
+        cafes = self.session.execute(select(Cafe)).scalars().all()
+        for cafe in cafes:
+            try:
+                split_price = cafe.coffee_price.split("£")
+            except ValueError:
+                pass
+            else:
+                float_price = float(split_price[1])
+                cafe.float_coffee_price = float_price
+                self.session.commit()
