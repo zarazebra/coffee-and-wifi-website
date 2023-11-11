@@ -33,81 +33,83 @@
           <h2>Filters</h2>
           <form name="selectFilters" id="filters" method="post" novalidate>
             <div class="btn-group-vertical" role="group" aria-label="Vertical checkbox button group">
-                <input type="checkbox" class="btn-check" id="calls">
+                <input type="checkbox" class="btn-check" name="calls" id="calls">
                 <label class="btn btn-outline-secondary" for="calls">
                   <img src="static/images/calls.svg" alt="Telephone" width="25" height="25">
                   Take Calls
                 </label><br>
 
-                <input type="checkbox" class="btn-check" id="sockets">
+                <input type="checkbox" class="btn-check" name="sockets" id="sockets">
                 <label class="btn btn-outline-secondary" for="sockets">
                   <img src="static/images/sockets.svg" alt="Electric-socket" width="25" height="25">
                   Sockets Available
                 </label><br>
 
-                <input type="checkbox" class="btn-check" id="wifi">
+                <input type="checkbox" class="btn-check" name="wifi" id="wifi">
                 <label class="btn btn-outline-secondary" for="wifi">
                   <img src="static/images/wifi.svg" alt="WiFi-sign" width="25" height="25">
                   WiFi
                 </label><br>
 
-                <input type="checkbox" class="btn-check" id="toilet">
+                <input type="checkbox" class="btn-check" name="toilet" id="toilet">
                 <label class="btn btn-outline-secondary" for="toilet">
                   <img src="static/images/toilet.svg" alt="WC" width="25" height="25">
                   Toilets
                 </label><br>
 
-                <input type="checkbox" class="btn-check" id="num_of_seats" data-bs-toggle="collapse" data-bs-target="#collapseSeats" aria-expanded="false" aria-controls="collapseSeats">
+                <input type="checkbox" class="btn-check" name="num_of_seats" id="num_of_seats" data-bs-toggle="collapse" data-bs-target="#collapseSeats" aria-expanded="false" aria-controls="collapseSeats">
                 <label class="btn btn-outline-secondary" for="num_of_seats">
                   <img src="static/images/seats.svg" alt="Persons" width="25" height="25">
                   No. Of Seats
                 </label>
                 <div class="collapse" id="collapseSeats">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_0-10" value="0-10">
+                    <input class="form-check-input" type="checkbox" name="seats_0-10" id="seats_0-10">
                     <label class="form-check-label" for="seats_0-10">0-10</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_10-20" value="10-20">
+                    <input class="form-check-input" type="checkbox" name="seats_10-20" id="seats_10-20">
                     <label class="form-check-label" for="seats_10-20">10-20</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_20-30" value="20-30">
+                    <input class="form-check-input" type="checkbox" name="seats_20-30" id="seats_20-30">
                     <label class="form-check-label" for="seats_20-30">20-30</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_30-40" value="30-40">
+                    <input class="form-check-input" type="checkbox" name="seats_30-40" id="seats_30-40">
                     <label class="form-check-label" for="seats_30-40">30-40</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_40-50" value="40-50">
+                    <input class="form-check-input" type="checkbox" name="seats_40-50" id="seats_40-50">
                     <label class="form-check-label" for="seats_40-50">40-50</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="no_of_seats_range" id="seats_50+" value="50+">
+                    <input class="form-check-input" type="checkbox" name="seats_50+" id="seats_50+">
                     <label class="form-check-label" for="seats_50+">50+</label>
                   </div>
                 </div><br>
 
-                <input type="checkbox" class="btn-check" id="coffee_price" data-bs-toggle="collapse" data-bs-target="#collapseCoffeePrice" aria-expanded="false" aria-controls="collapseCoffeePrice">
+                <input type="checkbox" class="btn-check" name="coffee_price" id="coffee_price" data-bs-toggle="collapse" data-bs-target="#collapseCoffeePrice" aria-expanded="false" aria-controls="collapseCoffeePrice">
                 <label class="btn btn-outline-secondary" for="coffee_price">
                   <img src="static/images/price.svg" alt="Pound-sign" width="25" height="25">
                   Coffee Price
                 </label>
                 <div class="collapse" id="collapseCoffeePrice">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="coffee_price_range" id="price-less-2" value="less-than-2">
+                    <input class="form-check-input" type="checkbox" name="price-less-2" id="price-less-2" value="2.00">
                     <label class="form-check-label" for="price-less-2">less than £2</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="coffee_price_range" id="price-between-2-2.50" value="2-2.50">
-                    <label class="form-check-label" for="price-between-2-2.50">£2-2.50</label>
+                    <input class="form-check-input" type="checkbox" name="price-less-2.50" id="price-less-2.50" value="2.50">
+                    <label class="form-check-label" for="price-less-2.50">less than £2.50</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" name="coffee_price_range" id="price-more-2.50" value="more-than-2.50">
+                    <input class="form-check-input" type="checkbox" name="price-more-2.50" id="price-more-2.50" value="2.51">
                     <label class="form-check-label" for="price-more-2.50">more than £2.50</label>
                   </div>
                 </div><br>
+                <button type="submit" class="btn btn-outline-secondary">Apply filters</button>
+                <br>
               </div>
             </div>
           </form>

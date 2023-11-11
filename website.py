@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from database import CafeDatabase, Cafe
 from forms import AddCafeForm
+from filter import Filter
 import os
 
 app = Flask(__name__)
@@ -15,10 +16,13 @@ def show_home():
     return render_template("index.html")
 
 
-@app.route("/overview")
+@app.route("/overview", methods=["GET", "POST"])
 def show_overview():
     cafes = cafe_database.get_all_cafes()
-    #value = request.form.get("inlineRadioOptions2")
+    if request.method == "POST":
+        filter_types = Filter()
+        filtered_cafes = cafe_database.show_filtered_cafes(filter_types)
+        return render_template("overview.html", cafes=filtered_cafes)
     return render_template("overview.html", cafes=cafes)
 
 
