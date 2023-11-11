@@ -21,6 +21,7 @@ def show_overview():
     cafes = cafe_database.get_all_cafes()
     if request.method == "POST":
         filter_types = Filter()
+        filter_types.get_filters()
         filtered_cafes = cafe_database.show_filtered_cafes(filter_types)
         return render_template("overview.html", cafes=filtered_cafes)
     return render_template("overview.html", cafes=cafes)
@@ -32,7 +33,7 @@ def show_details(cafe_id):
     return render_template("cafe.html", cafe=cafe)
 
 
-@app.route("/new")
+@app.route("/new", methods=["GET", "POST"])
 def add_cafe():
     form = AddCafeForm()
     if form.validate_on_submit():
