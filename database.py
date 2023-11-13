@@ -24,6 +24,7 @@ class Cafe(Base):
     seats = Column(String, nullable=False)
     coffee_price = Column(String)
     float_coffee_price = Column(Float)
+    address = Column(String)
 
 
 Base.metadata.create_all(engine)
@@ -32,7 +33,6 @@ Base.metadata.create_all(engine)
 class CafeDatabase:
     def __init__(self):
         self.session = Session(engine)
-        self.convert_price_to_float()
 
     def get_all_cafes(self):
         result = self.session.execute(select(Cafe))
@@ -48,17 +48,11 @@ class CafeDatabase:
         self.session.add(cafe)
         self.session.commit()
 
-    def convert_price_to_float(self):
-        cafes = self.session.execute(select(Cafe)).scalars().all()
-        for cafe in cafes:
-            try:
-                split_price = cafe.coffee_price.split("£")
-            except ValueError:
-                pass
-            else:
-                float_price = float(split_price[1])
-                cafe.float_coffee_price = float_price
-                self.session.commit()
+    def convert_price_to_float(self, cafe):
+        split_price = cafe.coffee_price.split("£")
+        float_price = float(split_price[1])
+        cafe.float_coffee_price = float_price
+        self.session.commit()
 
     def show_filtered_cafes(self, filtering):
         query = (select(Cafe)
@@ -79,3 +73,7 @@ class CafeDatabase:
 
         filtered_cafes = self.session.execute(query).scalars().all()
         return filtered_cafes
+
+    def add_address(self, cafe, address):
+        cafe.address = address
+        self.session.commit()
