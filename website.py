@@ -1,9 +1,13 @@
+# TODO O1: find way to get map location from url
+# TODO 02: implement map on website
+# TODO 03: adapting to screensize
+
 from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_bootstrap import Bootstrap5
 from database import CafeDatabase, Cafe
 from forms import AddCafeForm
 from filter import Filter
-from scraper import Scraper
+#from scraper import Scraper
 import os
 
 app = Flask(__name__)
@@ -37,7 +41,7 @@ def show_details(cafe_id):
 @app.route("/new", methods=["GET", "POST"])
 def add_cafe():
     form = AddCafeForm()
-    scraper = Scraper()
+    #scraper = Scraper()
     if form.validate_on_submit():
         new_cafe = Cafe(
             name=form.name.data,
@@ -53,8 +57,8 @@ def add_cafe():
         )
         cafe_database.add_cafe(new_cafe)
         cafe_database.convert_price_to_float(new_cafe)
-        address = scraper.find_address(new_cafe.map_url)
-        cafe_database.add_address(new_cafe, address)
+        #address = scraper.find_address(new_cafe.map_url)
+        #cafe_database.add_address(new_cafe, address)
         flash("The new cafe has successfully been added!")
         return redirect(url_for("add_cafe"))
 
