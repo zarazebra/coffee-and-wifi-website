@@ -18,7 +18,7 @@
 #
 #Example usage
 # google_maps_url = "Sa4bA8bTUiDRGCzW7"  # Replace with the actual place ID or identifier
-# api_key = "AIzaSyB8wRCvvqIrvMCkUIEj9UHdE2iD6crMCFs"  # Replace with your API key
+# api_key = "GOOGLE_API_KEY"  # Replace with your API key
 # coordinates = extract_coordinates_from_google_maps_url(google_maps_url, api_key)
 #
 # if coordinates:
